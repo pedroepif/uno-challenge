@@ -148,7 +148,10 @@ export default function CheckboxList() {
   const onCancelDelete = (event) => {
     event?.preventDefault();
     setOpenDeleteDialog(false);
-    setTimeout(() => setDeletingItem(undefined), 150);
+    setTimeout(() => {
+      setDeletingItem(undefined);
+      setDeletingError("");
+    }, 150);
   }
 
   // Função para lidar com a exclusão de um item
@@ -319,7 +322,7 @@ export default function CheckboxList() {
             Esta ação irá excluir permanentemente o item: {deletingItem?.name}.
           </DialogContentText>
           {deletingError && (
-            <Alert severity="error">{deletingError}</Alert>
+            <Alert sx={{ marginTop: "10px"}} severity="error">{deletingError}</Alert>
           )}
         </DialogContent>
         <DialogActions>
